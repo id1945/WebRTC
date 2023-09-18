@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebRTC Audio/Video Communication</title>
+</head>
+<body>
+    <h1>Trình duyệt A</h1>
+    <video id="localVideo" autoplay></video>
+    <video id="remoteVideo" autoplay></video>
+
+    <script>
+        // Lấy stream từ camera và microphone
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+            .then(function(stream) {
+                // Hiển thị stream local trên video element có id là "localVideo"
+                var localVideo = document.getElementById('localVideo');
+                localVideo.srcObject = stream;
+
+                // Tạo peer connection
+                var pc = new RTCPeerConnection();
+
+                // Thêm stream local vào peer connection
+                stream.getTracks().forEach(function(track) {
+                    pc.addTrack(track, stream);
+                });
+
+                // Xử lý sự kiện khi có ice candidate
+                pc.onicecandidate = function(event) {
+                    if (event.candidate) {
+                        // Gửi ice candidate cho trình duyệt B
+                        sendIceCandidateToBrowserB(event.candidate);
+                    }
+                };
+
+                // Xử lý sự kiện khi có remote stream
+                pc.ontrack = function(event) {
+                    // Hiển thị remote stream lên video element có id là "remoteVideo"
+                    var remoteVideo = document.getElementById('remoteVideo');
+                    remoteVideo.srcObject = event.streams[0];
+                };
+
+                // Tạo offer và gửi cho trình duyệt B
+                pc.createOffer()
+                    .then(function(offer) {
+                        return pc.setLocalDescription(offer);
+                    })
+                    .then(function() {
+                        // Gửi offer cho trình duyệt B
+                        sendOfferToBrowserB(pc.localDescription);
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+        function sendOfferToBrowserB(offer) {
+            // Gửi offer cho trình duyệt B (qua mạng hoặc signaling server)
+            // ...
+        }
+
+        function sendIceCandidateToBrowserB(candidate) {
+            // Gửi ice candidate cho trình duyệt B (qua mạng hoặc signaling server)
+            // ...
+        }
+    </script>
+</body>
+</html>

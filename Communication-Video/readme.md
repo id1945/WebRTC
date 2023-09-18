@@ -3,6 +3,8 @@ Dưới đây là một ví dụ đơn giản về việc sử dụng WebRTC đ�
 Đầu tiên, chúng ta cần hai trình duyệt hoạt động trên hai thiết bị khác nhau (ví dụ: máy tính và điện thoại di động).
 
 Trên trình duyệt A (máy tính), chúng ta sẽ có mã HTML và JavaScript sau:
+```html
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +75,12 @@ Trên trình duyệt A (máy tính), chúng ta sẽ có mã HTML và JavaScript 
     </script>
 </body>
 </html>
+
+```
 Sau đó, trên trình duyệt B (điện thoại di động), chúng ta sẽ có mã HTML và JavaScript sau:
+
+```html
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,6 +138,7 @@ Sau đó, trên trình duyệt B (điện thoại di động), chúng ta sẽ c�
     </script>
 </body>
 </html>
+```
 Trong ví dụ trên, trình duyệt A và trình duyệt B sẽ lấy stream từ camera và microphone và gửi cho nhau thông qua WebRTC. Mỗi trình duyệt sẽ tạo một peer connection và gửi và nhận các offer, answer và ice candidate thông qua một hệ thống signaling hoặc server trung gian.
 
 Lưu ý rằng trong thực tế, việc triển khai WebRTC yêu cầu một hệ thống signaling hoặc server trung gian để truyền tải thông tin giữa các trình duyệt. Ví dụ trên chỉ tập trung vào phần WebRTC và không bao gồm phần signaling.

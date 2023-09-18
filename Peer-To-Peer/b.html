@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Peer-to-peer Data Transfer</title>
+</head>
+<body>
+    <h1>Trình duyệt B</h1>
+
+    <div id="messageOutput"></div>
+
+    <script>
+        var peerConnection;
+        var dataChannel;
+
+        // Tạo peer connection
+        peerConnection = new RTCPeerConnection();
+
+        // Xử lý sự kiện khi có data channel được tạo
+        peerConnection.ondatachannel = function(event) {
+            dataChannel = event.channel;
+
+            // Xử lý sự kiện khi có dữ liệu nhận được từ data channel
+            dataChannel.onmessage = function(event) {
+                var messageOutput = document.getElementById("messageOutput");
+                messageOutput.innerHTML += "<p>Nhận tin nhắn: " + event.data + "</p>";
+            };
+        };
+
+        // Kết nối đến trình duyệt A
+        // (Bước này bao gồm việc thiết lập signaling và thiết lập kết nối peer-to-peer)
+    </script>
+</body>
+</html>

@@ -1,3 +1,6 @@
+https://id1945.github.io/WebRTC/Peer-To-Peer/a.html \
+https://id1945.github.io/WebRTC/Peer-To-Peer/b.html
+
 Để thực hiện truyền dữ liệu trực tiếp giữa hai trình duyệt sử dụng Peer-to-peer data transfer trong JavaScript, chúng ta có thể sử dụng WebRTC DataChannel. Dưới đây là một ví dụ đơn giản:
 
 Trình duyệt A:

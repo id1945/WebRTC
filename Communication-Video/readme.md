@@ -1,3 +1,6 @@
+https://id1945.github.io/WebRTC/Communication-Video/a.html
+https://id1945.github.io/WebRTC/Communication-Video/b.html
+
 Dưới đây là một ví dụ đơn giản về việc sử dụng WebRTC để truyền thông thời gian thực âm thanh và video giữa hai trình duyệt:
 
 Đầu tiên, chúng ta cần hai trình duyệt hoạt động trên hai thiết bị khác nhau (ví dụ: máy tính và điện thoại di động).
